@@ -51,3 +51,9 @@ SELECT COUNT(State),State
 FROM Address_Book 
 WHERE State='Maharashtra' 
 GROUP BY State;
+
+--UC8 Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+SELECT *  
+FROM Address_Book
+WHERE City='Pune'
+ORDER BY First_Name ASC;
