@@ -27,3 +27,7 @@ SELECT * FROM Address_Book;
 --UC4 Ability to edit existing contact person using their name
 UPDATE Address_Book SET Person_Address='Vashi',City='NaviMumbai',State='Maharashtra' 
 WHERE First_Name='Aayush' AND Last_Name='Kadam';
+
+--UC5 Ability to delete a person using person's name
+DELETE FROM Address_Book
+WHERE First_Name='Aayush' AND Last_Name='Kadam';
