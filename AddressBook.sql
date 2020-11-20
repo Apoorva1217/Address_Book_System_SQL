@@ -23,3 +23,7 @@ VALUES('Apoorva','Rasal','ChandanNagar','Pune','Maharashtra',411001,9876543212,'
 	  ('Aayush','Kadam','Panvel','NaviMumbai','Maharashtra',420601,8071243444,'AayushK212@gmail.com');
 	  
 SELECT * FROM Address_Book;
+
+--UC4 Ability to edit existing contact person using their name
+UPDATE Address_Book SET Person_Address='Vashi',City='NaviMumbai',State='Maharashtra' 
+WHERE First_Name='Aayush' AND Last_Name='Kadam';
