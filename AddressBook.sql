@@ -62,3 +62,9 @@ ORDER BY First_Name ASC;
 ALTER TABLE Address_Book 
 ADD Address_Book_Name varchar(20) null,
 	Address_Book_Name varchar(20) null default 'Contacts';
+
+--UC10 Ability to get number of contact persons i.e. count by type
+SELECT COUNT(Address_Book_Type),Address_Book_Type
+FROM Address_Book
+WHERE Address_Book_Type='Family'
+GROUP BY Address_Book_Type;
