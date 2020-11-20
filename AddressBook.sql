@@ -40,3 +40,14 @@ WHERE City='Thane';
 SELECT * 
 FROM Address_Book
 WHERE State='Maharashtra';
+
+--UC7 Ability to understand the size of address book by City and State
+SELECT COUNT(City),City 
+FROM Address_Book 
+WHERE City='Pune' 
+GROUP BY City;
+
+SELECT COUNT(State),State 
+FROM Address_Book 
+WHERE State='Maharashtra' 
+GROUP BY State;
