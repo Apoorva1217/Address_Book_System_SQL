@@ -31,3 +31,12 @@ WHERE First_Name='Aayush' AND Last_Name='Kadam';
 --UC5 Ability to delete a person using person's name
 DELETE FROM Address_Book
 WHERE First_Name='Aayush' AND Last_Name='Kadam';
+
+--UC6 Ability to Retrieve Person belonging to a City or State from the Address Book
+SELECT * 
+FROM Address_Book
+WHERE City='Thane';
+
+SELECT * 
+FROM Address_Book
+WHERE State='Maharashtra';
