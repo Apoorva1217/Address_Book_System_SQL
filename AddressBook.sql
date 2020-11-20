@@ -57,3 +57,8 @@ SELECT *
 FROM Address_Book
 WHERE City='Pune'
 ORDER BY First_Name ASC;
+
+--UC9 Ability to identify each Address Book with name and Type
+ALTER TABLE Address_Book 
+ADD Address_Book_Name varchar(20) null,
+	Address_Book_Name varchar(20) null default 'Contacts';
