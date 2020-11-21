@@ -63,8 +63,26 @@ ALTER TABLE Address_Book
 ADD Address_Book_Name varchar(20) null,
 	Address_Book_Name varchar(20) null default 'Contacts';
 
+UPDATE Address_Book SET Address_Book_Name='PersonalInfo',Address_Book_Type='Family' 
+WHERE Phone_Number=9876543212;
+UPDATE Address_Book SET Address_Book_Name='TelephoneDirectory',Address_Book_Type='Profession' 
+WHERE Phone_Number=8076543444;	
+UPDATE Address_Book SET Address_Book_Name='PersonalInfo',Address_Book_Type='Family' 
+WHERE Phone_Number=8976543212;
+UPDATE Address_Book SET Address_Book_Name='FriendsList',Address_Book_Type='Friends' 
+WHERE Phone_Number=9776543423;
+UPDATE Address_Book SET Address_Book_Name='FriendsList',Address_Book_Type=default
+WHERE Phone_Number=8071243444;
+
 --UC10 Ability to get number of contact persons i.e. count by type
 SELECT COUNT(Address_Book_Type),Address_Book_Type
 FROM Address_Book
 WHERE Address_Book_Type='Family'
 GROUP BY Address_Book_Type;
+
+--UC11 Ability to add person to both Friend and Family
+INSERT INTO Address_Book(First_Name,Last_Name,Person_Address,City,State,Zip_Code,Phone_Number,Email,Address_Book_Name,Address_Book_Type)
+VALUES('Shubham','Rasal','Pimpri','Pune','Maharashtra',411422,9044543312,'Shubh19@gmail.com','PersonalInfo','Family'),
+      ('Shubham','Rasal','Pimpri','Pune','Maharashtra',411422,9944543232,'Shubh19@gmail.com','FriendsList','Friends');
+
+SELECT * FROM Address_Book;
