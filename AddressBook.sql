@@ -111,3 +111,42 @@ Address_Book_Name varchar(20) not null,
 Address_Book_Type varchar(20) not null default 'Contacts',
 FOREIGN KEY (PersonId) REFERENCES People(PersonId)
 );
+
+--UC13 Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 and UC 10 are working with new table structure
+--Refactor UC6
+SELECT First_Name,Last_Name,City
+FROM Address INNER JOIN People
+ON Address.PersonId=People.PersonId
+WHERE City='Thane';
+
+SELECT First_Name,Last_Name,City
+FROM Address INNER JOIN People
+ON Address.PersonId=People.PersonId
+WHERE State='Maharashtra';
+
+--Refactor UC7
+SELECT COUNT(City),City 
+FROM Address INNER JOIN People
+ON Address.PersonId=People.PersonId
+WHERE City='Pune' 
+GROUP BY City;
+
+SELECT COUNT(State),State 
+FROM Address INNER JOIN People
+ON Address.PersonId=People.PersonId
+WHERE State='Maharashtra' 
+GROUP BY State;
+
+--Refactor UC8
+SELECT *  
+FROM People INNER JOIN Address
+ON Address.PersonId=People.PersonId
+WHERE City='Pune'
+ORDER BY First_Name ASC;
+
+--Refactor UC10
+SELECT COUNT(Address_Book_Type),Address_Book_Type
+FROM AddressBook INNER JOIN People
+ON AddressBook.PersonId=People.PersonId
+WHERE Address_Book_Type='Family'
+GROUP BY Address_Book_Type;
