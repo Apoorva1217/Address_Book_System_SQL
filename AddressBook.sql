@@ -61,7 +61,7 @@ ORDER BY First_Name ASC;
 --UC9 Ability to identify each Address Book with name and Type
 ALTER TABLE Address_Book 
 ADD Address_Book_Name varchar(20) null,
-	Address_Book_Name varchar(20) null default 'Contacts';
+	Address_Book_Type varchar(20) null default 'Contacts';
 
 UPDATE Address_Book SET Address_Book_Name='PersonalInfo',Address_Book_Type='Family' 
 WHERE Phone_Number=9876543212;
@@ -86,3 +86,28 @@ VALUES('Shubham','Rasal','Pimpri','Pune','Maharashtra',411422,9044543312,'Shubh1
       ('Shubham','Rasal','Pimpri','Pune','Maharashtra',411422,9944543232,'Shubh19@gmail.com','FriendsList','Friends');
 
 SELECT * FROM Address_Book;
+
+--UC12 Draw the ER Diagram for Address Book Service DB
+CREATE TABLE People(
+PersonId int primary key not null IDENTITY(1,1),
+First_Name varchar(20) not null,
+Last_Name varchar(20) not null,
+Phone_Number numeric(10),
+Email VARCHAR(50)
+);
+
+CREATE TABLE Address(
+PersonId int,
+Person_Address varchar(50) not null,
+City varchar(15) not null,
+State varchar(20) not null,
+Zip_Code numeric(6) not null,
+FOREIGN KEY (PersonId) REFERENCES People(PersonId)
+);
+
+CREATE TABLE AddressBook(
+PersonId int,
+Address_Book_Name varchar(20) not null,
+Address_Book_Type varchar(20) not null default 'Contacts',
+FOREIGN KEY (PersonId) REFERENCES People(PersonId)
+);
